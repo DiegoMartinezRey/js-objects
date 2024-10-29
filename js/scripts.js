@@ -101,7 +101,7 @@ const fillObject = (phrase) => {
   const vowels = `aeiouáéíóúAEIOU`;
   const consonants = "bcdfghjklmnñpqrstvwxyz";
   const alphabet = "abcdefghijklmnñopqrstuvwxyz";
-  let phraseReplace = phrase;
+  let phraseReplace = phrase.toLowerCase();
   let phraseCode = "";
 
   for (let i = 0; i < phrase.length; i++) {
@@ -114,32 +114,45 @@ const fillObject = (phrase) => {
     }
     dataStrings.fourthFloor.asciiCode.push(phrase.charCodeAt(i));
 
-    phraseReplace = phraseReplace
-      .toLowerCase()
-      .replaceAll("a", 1)
-      .replaceAll("e", 2)
-      .replaceAll("i", 3)
-      .replaceAll("o", 4)
-      .replaceAll("u", 5)
-      .replaceAll("á", 1)
-      .replaceAll("é", 2)
-      .replaceAll("í", 3)
-      .replaceAll("ó", 4)
-      .replaceAll("ú", 5);
+    // phraseReplace = phraseReplace
+    //   .toLowerCase()
+    //   .replaceAll("a", 1)
+    //   .replaceAll("e", 2)
+    //   .replaceAll("i", 3)
+    //   .replaceAll("o", 4)
+    //   .replaceAll("u", 5)
+    //   .replaceAll("á", 1)
+    //   .replaceAll("é", 2)
+    //   .replaceAll("í", 3)
+    //   .replaceAll("ó", 4)
+    //   .replaceAll("ú", 5);
 
-    if (consonants.includes(phraseReplace[i])) {
-      if (phraseReplace[i] !== "b") {
+    if (vowels.includes(phraseReplace[i])) {
+      phraseReplace[i] === "a" || phraseReplace[i] === "á"
+        ? (phraseCode += 1)
+        : "";
+      phraseReplace[i] === "e" || phraseReplace[i] === "é"
+        ? (phraseCode += 2)
+        : "";
+      phraseReplace[i] === "i" || phraseReplace[i] === "í"
+        ? (phraseCode += 3)
+        : "";
+      phraseReplace[i] === "o" || phraseReplace[i] === "ó"
+        ? (phraseCode += 4)
+        : "";
+      phraseReplace[i] === "u" || phraseReplace[i] === "ú"
+        ? (phraseCode += 5)
+        : "";
+    } else {
+      if (phraseReplace[i] === " ") {
+        phraseCode += alphabet[Math.floor(Math.random() * alphabet.length)];
+      } else if (phraseReplace[i] !== "b") {
         phraseCode += consonants[consonants.indexOf(phraseReplace[i]) - 1];
       } else {
         phraseCode += "z";
       }
-    } else {
-      if (phraseReplace[i] === " ") {
-        phraseCode += alphabet[Math.floor(Math.random() * alphabet.length)];
-      } else {
-        phraseCode += phraseReplace[i];
-      }
     }
+
     dataStrings.sixthFloor.secretCode = phraseCode;
   }
 
