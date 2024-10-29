@@ -108,7 +108,9 @@ const fillObject = (phrase) => {
     if (vowels.includes(phrase[i])) {
       dataStrings.firstFloor.vowels.push(phrase[i]);
     } else {
-      dataStrings.secondFloor.consonants.push(phrase[i]);
+      if (phrase[i] !== " ") {
+        dataStrings.secondFloor.consonants.push(phrase[i]);
+      }
     }
     dataStrings.fourthFloor.asciiCode.push(phrase.charCodeAt(i));
 
@@ -160,3 +162,4 @@ const fillObject = (phrase) => {
 };
 
 fillObject("Si no estudias acabarás como Enrique");
+fillObject("Estamos viendo objetos");
