@@ -172,3 +172,38 @@ const fillObject = (phrase) => {
 
 fillObject("Si no estudias acabarás como Enrique");
 fillObject("Estamos viendo objetos");
+
+// - Imprimir una palabra con la letras cambiadas a la anterior del abecedario
+
+const replaceAlphabet = (word) => {
+  const vowels = "aeiouáéíóú";
+  const vowelsAccented = "áéíóú";
+  const alphabet = "abcdefghijklmnñopqrstuvwxyz";
+  let newWord = "";
+  for (let i = 0; i < word.length; i++) {
+    if (vowels.includes(word[i])) {
+      if (vowelsAccented.includes(word[i])) {
+        newWord += "*";
+      } else if (word[i] === "a") {
+        newWord += "z";
+      } else {
+        newWord += alphabet[alphabet.indexOf(word[i].toLowerCase()) - 1];
+      }
+    } else {
+      if (word[i] === " ") {
+        newWord += Math.floor(Math.random() * 11);
+      } else if (word[i] === "y") {
+        newWord += "a";
+      } else if (word[i] === "z") {
+        newWord += "b";
+      } else if (word[i] === "ñ") {
+        newWord += "$";
+      } else {
+        newWord += alphabet[alphabet.indexOf(word[i].toLowerCase()) + 2];
+      }
+    }
+  }
+  console.log(newWord);
+};
+
+replaceAlphabet("Diego y Alejandróñ");
