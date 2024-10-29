@@ -115,6 +115,7 @@ const fillObject = (phrase) => {
     dataStrings.fourthFloor.asciiCode.push(phrase.charCodeAt(i));
 
     phraseReplace = phraseReplace
+      .toLowerCase()
       .replaceAll("a", 1)
       .replaceAll("e", 2)
       .replaceAll("i", 3)
@@ -124,12 +125,7 @@ const fillObject = (phrase) => {
       .replaceAll("é", 2)
       .replaceAll("í", 3)
       .replaceAll("ó", 4)
-      .replaceAll("ú", 5)
-      .replaceAll("A", 1)
-      .replaceAll("E", 2)
-      .replaceAll("I", 3)
-      .replaceAll("O", 4)
-      .replaceAll("U", 5);
+      .replaceAll("ú", 5);
 
     if (consonants.includes(phraseReplace[i])) {
       if (phraseReplace[i] !== "b") {
